@@ -70,3 +70,14 @@ city = st.text_input(
     icon="🏙️"
 )
 st.write("City:", city)
+
+
+
+message = st.text_area("Enter Message")
+
+
+age = st.number_input(
+    "Age",
+    min_value=1,
+    max_value=100
+)

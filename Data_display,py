@@ -1,0 +1,122 @@
+import streamlit as st
+import pandas as pd
+
+st.title("📊 Module 4 : Data Display")
+
+# ==========================================================
+# Sample Data
+# ==========================================================
+
+df = pd.DataFrame({
+    "Name": ["Avinash", "Rahul", "Priya", "Ankit"],
+    "Age": [20, 21, 22, 23],
+    "Branch": ["CSE", "IT", "ECE", "AI"],
+    "CGPA": [8.9, 8.5, 9.2, 8.8]
+})
+
+# ==========================================================
+# st.dataframe()
+# ==========================================================
+
+st.header("1. st.dataframe()")
+
+st.subheader("Example 1 : Simple DataFrame")
+st.dataframe(df)
+
+st.subheader("Example 2 : Custom Width & Height")
+st.dataframe(
+    df,
+    width=500,
+    height=180
+)
+
+st.subheader("Example 3 : Hide Index")
+st.dataframe(
+    df,
+    hide_index=True
+)
+
+# ==========================================================
+# st.table()
+# ==========================================================
+
+st.header("2. st.table()")
+
+st.subheader("Example 1 : Static Table")
+st.table(df)
+
+st.subheader("Example 2 : Selected Columns")
+st.table(df[["Name", "CGPA"]])
+
+st.subheader("Example 3 : Top 2 Students")
+st.table(df.head(2))
+
+# ==========================================================
+# st.metric()
+# ==========================================================
+
+st.header("3. st.metric()")
+
+st.subheader("Example 1 : Single Metric")
+st.metric(
+    label="Revenue",
+    value="₹50,000"
+)
+
+st.subheader("Example 2 : Metric with Delta")
+st.metric(
+    label="Users",
+    value="1500",
+    delta="+150"
+)
+
+st.subheader("Example 3 : Stock Price")
+st.metric(
+    label="Stock Price",
+    value="₹210",
+    delta="-10"
+)
+
+# ==========================================================
+# st.json()
+# ==========================================================
+
+st.header("4. st.json()")
+
+st.subheader("Example 1 : Dictionary")
+
+student = {
+    "Name": "Avinash",
+    "Age": 20,
+    "College": "NSUT"
+}
+
+st.json(student)
+
+st.subheader("Example 2 : Nested JSON")
+
+employee = {
+    "id": 101,
+    "name": "Rahul",
+    "skills": [
+        "Python",
+        "ML",
+        "SQL"
+    ],
+    "address": {
+        "city": "Delhi",
+        "country": "India"
+    }
+}
+
+st.json(employee)
+
+st.subheader("Example 3 : API Response")
+
+api_response = {
+    "status": "success",
+    "prediction": "Spam",
+    "confidence": 0.98
+}
+
+st.json(api_response)
